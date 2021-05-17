@@ -40,11 +40,11 @@ function user_can_filter( $retval, $user_id, $capability, $site_id, $args = arra
 			break;
 
 		case 'bp_members_invitations_view_screens':
-			$retval = bp_get_members_invitations_allowed();
+			$retval = is_user_logged_in() && bp_get_members_invitations_allowed();
 			break;
 
 		case 'bp_members_invitations_view_send_screen':
-			$retval = bp_get_members_invitations_allowed() && bp_user_can( $user_id, 'bp_members_invitations_view_screens' );
+			$retval = is_user_logged_in() && bp_get_members_invitations_allowed() && bp_user_can( $user_id, 'bp_members_invitations_view_screens' );
 			break;
 	}
 
